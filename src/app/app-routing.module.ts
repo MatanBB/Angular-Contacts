@@ -5,7 +5,6 @@ import { ContactDetailsComponent } from './views/contact-details/contact-details
 import { ContactEditComponent } from './views/contact-edit/contact-edit.component';
 import { ContactIndexComponent } from './views/contact-index/contact-index.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
-
 const routes: Routes = [
   {
     path: 'contacts/:id',

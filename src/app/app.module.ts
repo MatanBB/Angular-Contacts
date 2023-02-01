@@ -16,7 +16,6 @@ import { BTCChartComponent } from './cmps/btc-chart/btc-chart.component';
 import { HeaderComponent } from './cmps/app-header/header.component';
 import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
 import { ContactEditComponent } from './views/contact-edit/contact-edit.component';
-import { SignUpComponent } from '.views/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
