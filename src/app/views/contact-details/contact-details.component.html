@@ -1,0 +1,8 @@
+<section *ngIf="contact" class="contact-details">
+  <button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">x</button>
+  <div class="contact-info">
+    <h2>{{contact.name}}</h2>
+    <h4><span>Email address:</span> {{contact.email}}</h4>
+    <h4><span>Phone number:</span> {{contact.phone}}</h4>
+  </div>
+</section>

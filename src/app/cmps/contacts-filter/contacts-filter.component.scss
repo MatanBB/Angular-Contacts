@@ -1,0 +1,16 @@
+form{
+  display: flex;
+  justify-content: center;
+  input{
+    width: 15rem;
+    padding: 0.3rem;
+    border: 2px solid rgb(26, 35, 110,0.4);
+    background-color: rgb(228, 244, 244);
+    border-radius: 0.3rem;
+    font-weight: bold;
+    padding-inline-start: 0.5rem; 
+    &:focus{
+      outline: none;
+    }
+  }
+}

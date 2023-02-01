@@ -1,0 +1,8 @@
+<section class="home-page">
+  <section class="user-section">
+    <h4>Hello {{user.name | json}}!</h4>
+    <h4>Coins: {{user.coins | json}}!</h4>
+    <h4>Moves: {{user.moves.length | json}}</h4>
+    <button routerLink="/">Continue</button>
+  </section>
+</section>

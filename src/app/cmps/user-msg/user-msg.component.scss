@@ -1,0 +1,14 @@
+.user-msg {
+    width: fit-content;
+    padding: 0.2rem 0.8rem;
+    background-color: whitesmoke;
+    border: black solid 1px;
+    border-radius: 0.4rem;
+    position: fixed;
+    top: 5rem; right: 50%;
+    transform: translate(50%,-50%);
+    text-align: center;
+    box-shadow: 0 0 2px #000000c9;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
