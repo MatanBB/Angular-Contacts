@@ -1,0 +1,7 @@
+<div class="user-moves" *ngIf="Moves.length&&contact">
+  <h2>Your transfers to {{contact.name}}:</h2>
+  <div class="move" *ngFor="let move of Moves">
+    <p>At: {{move.at | date}}</p>
+    <p>Amount: {{move.amount | json}}</p>
+  </div>
+</div>

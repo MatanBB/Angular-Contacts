@@ -1,0 +1,26 @@
+section{
+  margin-inline-start: 3rem;
+  display: inline-block;
+}
+h2{
+  font-size: 1.2rem;
+  text-decoration: underline;
+  margin: 0;
+}
+.move-div{
+  display: flex;
+  padding-inline: 1rem;
+  padding-block: 0.06rem;
+  margin-top: 0.5rem;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(127, 155, 240,0.2);
+  border-radius: 0.4rem;
+  font-weight: bold;
+  width: 16rem;
+  border: 1px solid rgb(231, 231, 231);
+  p{
+    margin: 0;
+  }
+}

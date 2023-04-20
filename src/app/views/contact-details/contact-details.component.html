@@ -5,4 +5,16 @@
     <h4><span>Email address:</span> {{contact.email}}</h4>
     <h4><span>Phone number:</span> {{contact.phone}}</h4>
   </div>
+  <div>
+    <div class="transfer-coins" *ngIf="currUser">
+      <h4>Transfer coins to {{contact.name}}</h4>
+      <label for="coins">Amount:</label>
+      <input [(ngModel)]="amountToTransfer" type="number" id="coins" name="coins">
+      <button (click)="transferCoins()">Transfer</button>
+    </div>
+  </div>
 </section>
+
+<div *ngIf="contact">
+  <move-list [contact]="contact"></move-list>
+</div>

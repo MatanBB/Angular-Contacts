@@ -5,6 +5,8 @@ import { ContactDetailsComponent } from './views/contact-details/contact-details
 import { ContactEditComponent } from './views/contact-edit/contact-edit.component';
 import { ContactIndexComponent } from './views/contact-index/contact-index.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
+import { SignUpComponent } from './views/sign-up/sign-up.component';
+import { LoginComponent } from './views/login/login.component';
 const routes: Routes = [
   {
     path: 'contacts/:id',
@@ -13,6 +15,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
   },
   { path: 'home', component: HomePageComponent},
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'bitcoin', component: BitcoinChartComponent },
   {
     path: '', component: ContactIndexComponent, children: [

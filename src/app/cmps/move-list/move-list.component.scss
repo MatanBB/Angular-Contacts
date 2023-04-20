@@ -1,0 +1,20 @@
+.user-moves{
+  h2{
+    margin-top: 1.3rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+  .move{
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    border: 1px red solid;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.1rem 2rem;
+    border-radius: 0.4rem;
+    background-color: rgb(223, 223, 223);
+  }
+}

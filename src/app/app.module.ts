@@ -16,6 +16,11 @@ import { BTCChartComponent } from './cmps/btc-chart/btc-chart.component';
 import { HeaderComponent } from './cmps/app-header/header.component';
 import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
 import { ContactEditComponent } from './views/contact-edit/contact-edit.component';
+import { SignUpComponent } from './views/sign-up/sign-up.component';
+import { LoginComponent } from './views/login/login.component';
+import { MoveListComponent } from './cmps/move-list/move-list.component';
+import { UserLastMovesComponent } from './cmps/user-last-moves/user-last-moves.component';
+import { KeyvaluefilterPipe } from './pipes/keyvaluefilter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,11 @@ import { ContactEditComponent } from './views/contact-edit/contact-edit.componen
     HeaderComponent,
     UserMsgComponent,
     ContactEditComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent,
+    MoveListComponent,
+    UserLastMovesComponent,
+    KeyvaluefilterPipe,
   ],
   imports: [
     BrowserModule,

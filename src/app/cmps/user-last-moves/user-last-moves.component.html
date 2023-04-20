@@ -1,0 +1,7 @@
+<section *ngIf="lastMoves.length">
+  <h2>Your 3 last moves:</h2>
+  <div class="move-div" *ngFor="let move of lastMoves|keyvaluefilter">
+    <p>To:{{move.value.to|json}}</p>
+    <p>Amount:{{move.value.amount|json}}</p>
+  </div>
+</section>

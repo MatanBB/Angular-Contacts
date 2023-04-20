@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { Contact, ContactFilter } from '../models/contact.model';
+import { Move } from '../models/move';
+import { LocalStorageService } from './localStorage-service.js.service';
 
 
 
@@ -127,6 +129,7 @@ const CONTACTS = [
 })
 export class ContactService {
 
+
     //mock the server
     private _contactsDb: Contact[] = CONTACTS;
 
@@ -136,10 +139,18 @@ export class ContactService {
     private _contactFilter$ = new BehaviorSubject<ContactFilter>({ term: '' })
     public contactFilter$ = this._contactFilter$.asObservable()
 
-    constructor() {
+    private _currUserMoves$ = new BehaviorSubject<Move[]>([])
+    public currUserMoves$ = this._currUserMoves$.asObservable()
+    constructor(private localStorageService:LocalStorageService) {
     }
 
+    public onMoveInit(moves:Move[]){
+        this._currUserMoves$.next(moves)
+    }
 
+    public updateMoveObs(moveList:any){
+        this._currUserMoves$.next(moveList)
+    }
     // public loadContacts(filterBy?: { term: string }): void {
     //     let contacts = this._contactsDb;
     //     if (filterBy && filterBy.term) {

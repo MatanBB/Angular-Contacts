@@ -1,9 +1,9 @@
 <section>
   <section>
+    <user-last-moves></user-last-moves>
     <contacts-filter></contacts-filter>
-    <a routerLink="/edit">Add contact</a>
-    <contacts-list (onRemove)="onRemoveContact($event)"
-      [contacts]="contacts$ | async"></contacts-list>
+    <button class="add-contact"><a routerLink="/edit">Add contact</a></button>
+    <contacts-list (onRemove)="onRemoveContact($event)" [contacts]="contacts$ | async"></contacts-list>
   </section>
 </section>
 

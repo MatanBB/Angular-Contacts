@@ -2,12 +2,21 @@ nav {
   margin: 0;
   ul {
     display: flex;
+    justify-content: space-between;
+    padding-inline-end: 3rem;
+    span{
+      color:white;
+    }
+   div{
+    display: flex;
     list-style-type: none;
     justify-content: flex-start;
+    align-items: center;
     gap: 2rem;
-    margin: 0;
-    margin-bottom: 2rem;
     height: 3rem;
+   }
+    margin: 0;
+    margin-bottom: 0.7rem;
     background-color: rgb(110, 139, 236);
     align-items: center;
     font-size: 1.2rem;

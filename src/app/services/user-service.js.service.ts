@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { User } from '../models/user.model';
+import { LocalStorageService } from './localStorage-service.js.service';
 
 
-const user = [
+const users = [
   {
     "_id": "5a56640269f443a5d64b32ca",
     "name": "Matan Bibi",
@@ -19,18 +20,69 @@ const user = [
 export class UserService {
 
   //mock the server
-  private _usersDb: User[] = user;
+  private _usersDb: User[] = users;
 
   private _users$ = new BehaviorSubject<User[]>([])
   public users$ = this._users$.asObservable()
 
-  constructor() {
+  private _currUser$ = new BehaviorSubject<User>({name:'',coins:0,moves:[]})
+  public currUser$ = this._currUser$.asObservable()
+
+  constructor(private localStorageService: LocalStorageService) {
   }
 
   public loadUser(filterBy?: { term: string }): void {
-    let user = this._usersDb;
-    console.log(user);
+    let user = this._usersDb
     this._users$.next(user)
+  }
+
+  public getLoggedInUser() {
+    return this.localStorageService.loadFromLocalSession('currUser')
+  }
+
+  public setLoggedInUser() {
+    let currUser = this.localStorageService.loadFromLocalSession('currUser')
+    this._currUser$.next(JSON.parse(currUser))
+  }
+
+  public signUp(user: User): void {
+    let users = JSON.parse(this.localStorageService.loadFromLocalStorage('Users'))
+    users && users.length ? users = users : users = []
+    user._id=getRandomId()
+    user.coins = 100
+    users.push(user)
+    this.localStorageService.saveToLocalStorage('Users', users)
+    sessionStorage.setItem('currUser', JSON.stringify(user))
+    this._users$.next(users)
+    console.log(this._users$);
+    
+  }
+
+  public updateUser(user:User):void{
+    let userId = user._id
+    let users = this.loadUsers()
+    if(!users||!userId) return console.log('Trouble updating user');
+    const idx = users.findIndex(currUser=>{return user._id===currUser._id})
+    users?.splice(idx,1,user)
+    this.localStorageService.saveToLocalStorage('Users',users)
+  }
+
+  public addMove() {
+    let user = JSON.parse(this.localStorageService.loadFromLocalSession('User'))
+    console.log(user)
+  }
+
+  onLogin(userName:string){
+    let users = this.loadUsers()
+    if (!users) return console.log('Trouble loading users...');
+    let user = users.find((user:User)=>{ return user.name.toLocaleLowerCase()===userName.toLocaleLowerCase()})
+    user?sessionStorage.setItem('currUser',JSON.stringify(user)):alert('Username not found')
+    this._currUser$.next(user!)
+  }
+  
+  public loadUsers(): User[] | null {
+    let data= this.localStorageService.loadFromLocalStorage('Users')
+    return JSON.parse(data)
   }
 
   private _sort(contacts: User[]): User[] {
@@ -44,46 +96,6 @@ export class UserService {
       return 0;
     })
   }
-
-  // public query() {
-  //     const users = this._usersDb
-  //     return this._users$.next(users);
-  // }
-
-  // public getUserById(id: string): Observable<User> {
-  //     //mock the server work
-  //     const user = this._usersDb.find(user => user._id === id)
-
-  //     //return an observable
-  //     return user ? of(user) : throwError(() => `User id ${id} not found!`)
-  // }
-
-  // public deleteUser(id: string) {
-  //     //mock the server work
-  //     this._usersDb = this._usersDb.filter(user => user._id !== id)
-
-  //     // change the observable data in the service - let all the subscribers know
-  //     this._users$.next(this._usersDb)
-  // }
-
-  // public saveUser(user: User) {
-  //     return user._id ? this._updateUser(user) : this._addUser(user)
-  // }
-
-  // private _updateUser(user: User) {
-  //     //mock the server work
-  //     this._usersDb = this._usersDb.map(c => user._id === c._id ? user : c)
-  //     // change the observable data in the service - let all the subscribers know
-  //     this._users$.next(this._sort(this._usersDb))
-  // }
-
-  // private _addUser(user: User) {
-  //     //mock the server work
-  //     const newUser = new User(user.name, user.email, user.phone);
-  //     if (typeof newUser.setId === 'function') newUser.setId(getRandomId());
-  //     this._usersDb.push(newUser)
-  //     this._users$.next(this._sort(this._usersDb))
-  // }
 }
 
 

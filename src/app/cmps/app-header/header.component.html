@@ -1,9 +1,16 @@
 <section>
   <nav>
     <ul>
-      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"> Home</a>
-      <a routerLink="/">Contacts</a>
-      <a routerLink="/bitcoin" routerLinkActive="active">Bitcoin </a>
+      <div>
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"> Home</a>
+        <a routerLink="/">Contacts</a>
+        <a routerLink="/bitcoin" routerLinkActive="active">Bitcoin </a>
+        <a routerLink="/sign-up" routerLinkActive="active">Signup </a>
+        <a routerLink="/login" routerLinkActive="active">Login </a>
+      </div>
+      <div *ngIf="user">
+        <h5>Welcome, <span title="Current user">{{user.name}}</span>!</h5>
+      </div>
     </ul>
   </nav>
 </section>
